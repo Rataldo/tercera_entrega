@@ -10,9 +10,21 @@
     <div class="container my-5">
         <div class="row justify-content-center">
             <div class="col-lg-6">
-                <h2>AQUI VAN LOS CURSOS</h2>
-                <p class="lead">A single, lightweight helper class allows you to add engaging, full width background images to sections of your page.</p>
-                <p class="mb-0">The universe is almost 14 billion years old, and, wow! Life had no problem starting here on Earth! I think it would be inexcusably egocentric of us to suggest that we're alone in the universe.</p>
+                <h2>Formulario para agregar Cursos</h2>
+                <p class="lead">en esta pagina debes agregar informacion de los cursos en el formulario de mas abajo</p>
+                <p class="mb-0">llena los campos de mas abajo, en cursos solo pueden ir caracteres y en camada numeros. una ves hecho esto,
+                    al presionar enviar la pagina te va a regresar al inicio automaticamente.
+                </p>
+                <br>
+                <br>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <table>
+                        {{ curso_formulario.as_table }}
+                    </table>
+                    <input type="submit" value="Enviar">
+            
+                </form>
             </div>
         </div>
     </div>
