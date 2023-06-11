@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from ReneApp.forms import CursoFormulario, EstudianteFormulario, ProfesorFormulario
+from ReneApp.forms import CursoFormulario, EstudianteFormulario, ProfesorFormulario, BuscarCurso
 from .models import *
+from django.shortcuts import redirect
 # Create your views here.
 
 def index(request):
@@ -59,5 +60,23 @@ def profesores(request):
 
     return render(request, "ReneApp/profesores.html", {"profesor_formulario": profesor_formulario})
 
+
+
+#Formulario de busqueda de cursos
+
+def buscar_cursos(request):
+    if request.method == "POST":
+        formulario = BuscarCurso(request.POST)
+        if formulario.is_valid():
+            termino_busqueda = formulario.cleaned_data['termino_busqueda']
+            return resultados_busqueda_cursos(request, termino_busqueda=termino_busqueda)
+    else:
+        formulario = BuscarCurso()
+
+    return render(request, "ReneApp/buscar_cursos.html", {'formulario': formulario})
+
+def resultados_busqueda_cursos(request, termino_busqueda):
+    cursos = Curso.objects.filter(nombre__icontains=termino_busqueda)
+    return render(request, "ReneApp/resultados_busqueda_cursos.html", {'cursos': cursos})
 
 

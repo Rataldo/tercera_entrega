@@ -1,0 +1,22 @@
+{% extends 'ReneApp/base.html' %}
+
+{% block title %} Resultados de la Búsqueda {% endblock title %}
+
+{% block main %}
+<section class="py-5">
+    <div class="container my-5">
+        <h2>Resultados de la Búsqueda</h2>
+        {% if cursos %}
+            <ul>
+                {% for curso in cursos %}
+                    <li>{{ curso.nombre }} - {{ curso.camada }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No se encontraron cursos que coincidan con lo ingresado.</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock main %}
+
+

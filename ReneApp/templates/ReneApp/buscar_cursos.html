@@ -1,0 +1,17 @@
+{% extends 'ReneApp/base.html' %}
+
+{% block title %} Buscar Cursos {% endblock title %}
+
+{% block main %}
+<section class="py-5">
+    <div class="container my-5">
+        <h2>Buscar Cursos</h2>
+        <form action="{% url 'buscar_cursos' %}" method="POST">
+            {% csrf_token %}
+            {{ formulario.as_p }}
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+</section>
+{% endblock main %}
+
