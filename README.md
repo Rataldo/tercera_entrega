@@ -35,6 +35,6 @@ repositorio de la 3era entrega para el curso de Python en Coderhouse - comision 
   
 4) para probar el panel de administracion podemos usar el siguiente superuser:
 
-  usuario: rene
+  usuario: rene <br>
   contraseña: 123
 
