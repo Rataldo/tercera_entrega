@@ -1,3 +1,7 @@
+# """importante"""
+# segui trabajando y probando sobre este repositorio por lo que ya no funciona para la 3era entrega. hay un nuevo commit donde hice 
+pruebas sobre el login y creacion de usuario por lo que ya no cumple con lo necesario para la 3era pre-entrega
+
 # tercera_entrega
 repositorio de la 3era entrega para el curso de Python en Coderhouse - comision 40450
 
