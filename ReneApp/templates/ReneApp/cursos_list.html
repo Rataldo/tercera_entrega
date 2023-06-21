@@ -1,0 +1,38 @@
+{% extends 'ReneApp/base.html' %}
+
+{% block title %} lista de Cursos {% endblock title %}
+
+{% block main %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos_list</title>
+</head>
+<body>
+    <h1>Cursos de Coder - Python</h1>
+    <ul>
+        {% for curso in object_list %}
+        
+        <li>
+            <p>NOMBRE: {{ curso.nombre }}</p>
+            <p>
+                <a href="{% url 'Detail' curso.id %}">Ver</a>|
+                <a href="{% url 'Update' curso.id %}">Editar</a>|
+                <a href="{% url 'Delete' curso.id %}">Borrar</a>|
+
+            </p>
+        </li>
+
+        {% endfor %}
+    </ul>
+    <br>
+    <br>
+    <a href="{% url 'Create' %}">Crear Curso</a>
+
+
+
+</body>
+</html>
+{% endblock main %}

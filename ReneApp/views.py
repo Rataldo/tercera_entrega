@@ -1,9 +1,17 @@
 from django.shortcuts import render
 from ReneApp.forms import CursoFormulario, EstudianteFormulario, ProfesorFormulario, BuscarCurso
 from .models import *
-
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
+from django.views.generic.edit import UpdateView
+from django.views.generic.edit import DeleteView
+from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+#request de incio con login required
+#login_required
 def index(request):
     
     return render(request, "ReneApp/index.html")
@@ -11,6 +19,7 @@ def index(request):
 
 
 #formulario de cursos
+#@login_required
 def cursos(request):
     if request.method == "POST":
         curso_formulario = CursoFormulario(request.POST) # Aqui me llega la informacion del html
@@ -29,6 +38,7 @@ def cursos(request):
 
 
 #formulario de estudiantes
+#@login_required
 def estudiantes(request):
     if request.method == "POST":
         estudiante_formulario = EstudianteFormulario(request.POST) # Aqui me llega la informacion del html
@@ -83,3 +93,43 @@ def resultados_busqueda_cursos(request, termino_busqueda):
     return render(request, "ReneApp/resultados_busqueda_cursos.html", {'cursos': cursos})
 
 
+
+#clases basadas en vistas:
+
+#LIST
+class CursoList(ListView):
+    
+    model = Curso
+    template_name = "ReneApp/cursos_list.html"
+    
+    
+#DETAIL   
+class CursoDetail(DetailView):
+    
+    model = Curso
+    template_name = "ReneApp/curso_detail.html"
+    
+    
+#CREATE
+class CursoCreate(CreateView):
+    
+    model = Curso
+    template_name = "ReneApp/curso_create.html"
+    fields = ["nombre", "camada"]
+    success_url = reverse_lazy("List")
+#UPDATE
+class CursoUpdate(UpdateView):
+    
+    model = Curso
+    template_name = "ReneApp/curso_update.html"
+    fields = ["nombre", "camada"]
+    success_url = reverse_lazy("List")
+    
+    
+    
+#DELETE
+class CursoDelete(DeleteView):
+    
+    model = Curso
+    success_url = reverse_lazy("List")
+    template_name = "ReneApp/curso_confirm_delete.html"

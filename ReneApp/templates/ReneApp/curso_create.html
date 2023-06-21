@@ -1,0 +1,18 @@
+{% extends 'ReneApp/base.html' %}
+
+{% block title %} Crear Curso {% endblock title %}
+
+{% block main %}
+<br>
+<form method="POST">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <input type="submit" value="Crear">
+
+</form>
+<br>
+<br>
+<a href="{% url 'List' %}">Regresar</a>
+
+{% endblock main %}

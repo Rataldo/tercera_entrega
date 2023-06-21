@@ -20,4 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("ReneApp.urls")), #originalmente el path "" era "ReneApp/" pero lo cambie para que entre directamente a la pagina
+    path("users/", include('Users.urls'))
 ]
